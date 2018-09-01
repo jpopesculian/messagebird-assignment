@@ -1,0 +1,52 @@
+{
+  "name": "messagebird-assignment",
+  "version": "1.0.0",
+  "description": "MessageBird Assignment",
+  "main": "index.js",
+  "repository": "https://github.com/jpopesculian/messagebird-assignment",
+  "author": "Julian Popescu <jpopesculian@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "serve": "node index.js",
+    "serve-dev": "nodemon index.js",
+    "build-dev": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "dev": "concurrently --kill-others \"npm run serve-dev\" \"npm run build-dev\"",
+    "build": "webpack --config ./webpack.config.js"
+  },
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.2.9",
+    "apollo-client": "^2.4.1",
+    "apollo-link": "^1.2.2",
+    "apollo-link-error": "^1.1.0",
+    "apollo-link-http": "^1.5.4",
+    "apollo-link-ws": "^1.0.8",
+    "apollo-server-koa": "^2.0.0-rc.12",
+    "graphql": "^14.0.0",
+    "graphql-subscriptions": "^0.5.8",
+    "graphql-tag": "^2.9.2",
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-websocket": "^5.0.1",
+    "messagebird": "^2.1.4",
+    "mongodb": "^3.1.4",
+    "react": "^16.4.2",
+    "react-apollo": "^2.1.11",
+    "react-dom": "^16.4.2",
+    "subscriptions-transport-ws": "^0.9.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "concurrently": "^4.0.1",
+    "nodemon": "^1.18.4",
+    "react-hot-loader": "^4.3.5",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7"
+  }
+}
