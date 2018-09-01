@@ -1,4 +1,4 @@
- yarn-error.log
- node_modules
- public/js
- .envrc
+node_modules
+.envrc
+yarn-error.log
+public/js
