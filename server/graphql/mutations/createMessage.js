@@ -2,6 +2,8 @@ const { GraphQLObjectType, GraphQLString, GraphQLNonNull } = require('graphql')
 const MessageType = require('../types/message')
 const create = require('../../api/create')
 const insert = require('../../db/insert')
+const pubsub = require('../pubsub')
+const { MESSAGE_CREATED } = require('../pubsub/topics')
 
 module.exports = {
   type: MessageType,
@@ -20,6 +22,7 @@ module.exports = {
       body
     })
     insert(message)
+    pubsub.publish(MESSAGE_CREATED, { messageCreated: message })
     return message
   }
 }

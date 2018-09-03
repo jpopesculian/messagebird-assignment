@@ -1,8 +1,11 @@
 const webpack = require('webpack')
 const path = require('path')
 
-module.exports = {
-  entry: './client/index.js',
+module.exports = (env, argv) => ({
+  entry: () =>
+    (argv.mode === 'development'
+      ? ['@babel/polyfill', './client/lib/devTools', './client/index.js']
+      : ['@babel/polyfill', './client/index.js']),
   module: {
     rules: [
       {
@@ -11,7 +14,29 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            plugins: [
+              '@babel/plugin-syntax-dynamic-import',
+              ['@babel/plugin-proposal-decorators', { legacy: true }],
+              ['@babel/plugin-proposal-class-properties', { loose: true }],
+              [
+                'transform-imports',
+                {
+                  // TODO remove
+                  'react-material-icon-svg': {
+                    transform: 'react-material-icon-svg/dist/${member}',
+                    preventFullImport: true
+                  },
+                  lodash: {
+                    transform: 'lodash/fp/${member}',
+                    preventFullImport: true
+                  }
+                }
+              ]
+            ],
+            presets: [
+              ['@babel/preset-env', { targets: 'last 1 version' }],
+              '@babel/preset-react'
+            ]
           }
         }
       }
@@ -36,4 +61,4 @@ module.exports = {
       }
     }
   }
-}
+})

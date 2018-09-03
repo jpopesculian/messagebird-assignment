@@ -5,12 +5,12 @@ const { createServer } = require('http')
 
 const port = 3000
 
-module.exports = () =>
-  db.connect().then(() => {
-    const server = createServer(app.callback())
-    server.on('close', () => db.disconnect())
-    graphql.installSubscriptionHandlers(server)
-    server.listen(port, () => {
-      console.log(`Server listening on http://localhost:${port}`)
-    })
+module.exports = async () => {
+  await db.connect()
+  const server = createServer(app.callback())
+  server.on('close', () => db.disconnect())
+  graphql.installSubscriptionHandlers(server)
+  server.listen(port, () => {
+    console.log(`Server listening on http://localhost:${port}`)
   })
+}
