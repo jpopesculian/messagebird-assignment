@@ -1,0 +1,16 @@
+@value primary-font, light-bg from '../../styles/colors.css';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:global(body), :global(html) {
+    font-family: Roboto, Arial, sans-serif;
+    color: primary-font;
+    line-height: 1.5em;
+    background-color: light-bg;
+    height: 100%;
+    width: 100%;
+}
+
+:global(#app) {
+    height: 100%;
+}

@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
+const _ = require('lodash')
 
 module.exports = (env, argv) => ({
   entry: () =>
@@ -21,10 +22,13 @@ module.exports = (env, argv) => ({
               [
                 'transform-imports',
                 {
-                  // TODO remove
-                  'react-material-icon-svg': {
-                    transform: 'react-material-icon-svg/dist/${member}',
-                    preventFullImport: true
+                  'react-icons': {
+                    transform: importName =>
+                      (_.includes(['Icon', 'witBaseIcon'], importName)
+                        ? 'react-icons-kit'
+                        : `react-icons-kit/feather/${importName}`),
+                    preventFullImport: true,
+                    skipDefaultConversion: true
                   },
                   lodash: {
                     transform: 'lodash/fp/${member}',
@@ -39,6 +43,13 @@ module.exports = (env, argv) => ({
             ]
           }
         }
+      },
+      {
+        test: /\.css$/,
+        loader: [
+          'style-loader',
+          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+        ]
       }
     ]
   },

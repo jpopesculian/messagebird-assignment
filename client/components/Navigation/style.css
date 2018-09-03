@@ -1,0 +1,8 @@
+@value inverted-font from '../../styles/colors.css';
+
+.container {
+    color: inverted-font;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 12em auto;
+}

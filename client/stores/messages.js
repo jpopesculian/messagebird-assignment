@@ -10,6 +10,10 @@ class MessagesStore {
   @observable messages = {}
   @observable subscription = null
 
+  constructor() {
+    this.init()
+  }
+
   @action init = () => {
     this.clear()
     this.load()

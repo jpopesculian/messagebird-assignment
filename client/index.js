@@ -1,7 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import App from './components/App'
 
-ReactDOM.render(<App />, document.getElementById('app'))
+const render = Component =>
+  ReactDOM.render(<Component />, document.getElementById('app'))
 
-module.hot.accept()
+render(App)
+
+if (module.hot) {
+  module.hot.accept('./components/App', () =>
+    render(require('./components/App').default)
+  )
+}

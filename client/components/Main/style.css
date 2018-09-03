@@ -1,0 +1,17 @@
+@value dark-bg from '../../styles/colors.css';
+
+.container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 15em 0.5em auto;
+    grid-template-rows: auto;
+}
+
+.navBarContainer {
+    background: dark-bg;
+}
+
+.contentContainer {
+    grid-column-start: 3;
+}
