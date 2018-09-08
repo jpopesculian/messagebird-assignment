@@ -6,3 +6,6 @@
 
 @value light-bg: rgb(246, 250, 253);
 @value dark-bg: rgb(12, 36, 76);
+
+@value primary-btn: rgb(63, 144, 220);
+@value primary-btn-hover: rgb(87, 159, 226);

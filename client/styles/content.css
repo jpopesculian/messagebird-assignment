@@ -1,0 +1,5 @@
+.container {
+    padding: 1em;
+    min-height: 100%;
+    position: relative;
+}
