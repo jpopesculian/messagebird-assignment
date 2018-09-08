@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './style.css'
 import Navigation from '../Navigation'
+import Content from '../Content'
 
 export default class Main extends Component {
   render() {
@@ -9,7 +10,9 @@ export default class Main extends Component {
         <div className={styles.navBarContainer}>
           <Navigation />
         </div>
-        <div className={styles.contentContainer} />
+        <div className={styles.contentContainer}>
+          <Content />
+        </div>
       </div>
     )
   }

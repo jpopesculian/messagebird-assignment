@@ -20,6 +20,12 @@ module.exports = (env, argv) => ({
               ['@babel/plugin-proposal-decorators', { legacy: true }],
               ['@babel/plugin-proposal-class-properties', { loose: true }],
               [
+                'babel-plugin-root-import',
+                {
+                  rootPathSuffix: 'client'
+                }
+              ],
+              [
                 'transform-imports',
                 {
                   'react-icons': {

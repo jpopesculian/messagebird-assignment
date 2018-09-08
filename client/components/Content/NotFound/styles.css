@@ -1,0 +1,24 @@
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {}
+
+.title, .subtitle {
+    display: block;
+    line-height: 1em;
+    font-weight: bold;
+    color: #ccc;
+    text-align: center;
+}
+
+.title {
+    font-size: 15em;
+}
+
+.subtitle {
+    font-size: 1.7em;
+}
