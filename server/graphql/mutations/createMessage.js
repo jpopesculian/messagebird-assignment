@@ -3,7 +3,7 @@ const MessageType = require('../types/message')
 const create = require('../../api/create')
 const insert = require('../../db/insert')
 const pubsub = require('../pubsub')
-const { MESSAGE_CREATED } = require('../pubsub/topics')
+const { MESSAGE_SENT } = require('../pubsub/topics')
 
 module.exports = {
   type: MessageType,
@@ -22,7 +22,7 @@ module.exports = {
       body
     })
     insert(message)
-    pubsub.publish(MESSAGE_CREATED, { messageCreated: message })
+    pubsub.publish(MESSAGE_SENT, { messageSent: message })
     return message
   }
 }

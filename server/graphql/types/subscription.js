@@ -1,9 +1,11 @@
 const { GraphQLObjectType } = require('graphql')
-const messageCreated = require('../subscriptions/messageCreated')
+const messageSent = require('../subscriptions/messageSent')
+const messageReceived = require('../subscriptions/messageReceived')
 
 module.exports = new GraphQLObjectType({
   name: 'Subscription',
   fields: {
-    messageCreated
+    messageSent,
+    messageReceived
   }
 })

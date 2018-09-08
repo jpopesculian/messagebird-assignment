@@ -1,10 +1,7 @@
 import { observable, action, computed, flow } from 'mobx'
-import messagesQuery from '../graphql/queries/messages'
-import messageCreatedSubscription from '../graphql/subscriptions/messageCreated'
-import client from '../apollo'
 import { forEach, values } from 'lodash'
 
-class MessagesStore {
+export class MessagesStore {
   @observable loading = true
   @observable error = false
   @observable messages = {}
@@ -12,6 +9,14 @@ class MessagesStore {
 
   constructor() {
     this.init()
+  }
+
+  doQuery() {
+    return new Promise((resolve, reject) => reject())
+  }
+
+  doSubscription() {
+    return new Promise((resolve, reject) => reject())
   }
 
   @action init = () => {
@@ -23,7 +28,7 @@ class MessagesStore {
   @action load = flow(function*() {
     this.loading = true
     try {
-      const { data } = yield client.query({ query: messagesQuery })
+      const { data } = yield this.doQuery()
       this.loading = false
       forEach(message => this.add(message), data.messages)
       return this.messages
@@ -37,13 +42,11 @@ class MessagesStore {
 
   @action subscribe = () => {
     this.unsubscribe()
-    return (this.subscription = client
-      .subscribe({ query: messageCreatedSubscription })
-      .subscribe(
-        ({ data }) => this.add(data.messageCreated),
-        error => console.warn(error),
-        () => (this.subscription = null)
-      ))
+    return (this.subscription = this.doSubscription().subscribe(
+      ({ data }) => this.add(data.messageCreated),
+      error => console.warn(error),
+      () => (this.subscription = null)
+    ))
   }
 
   @action unsubscribe = () => {
@@ -58,5 +61,3 @@ class MessagesStore {
     return values(this.messages)
   }
 }
-
-export default new MessagesStore()

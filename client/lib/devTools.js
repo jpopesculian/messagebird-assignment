@@ -1,6 +1,7 @@
 import _ from 'lodash/fp'
 import client from '../apollo'
-import messagesStore from '../stores/messages'
+import inboundMessagesStore from '../stores/inboundMessages'
+import outboundMessagesStore from '../stores/outboundMessages'
 import newMessageStore from '../stores/newMessage'
 import navigationStore from '../stores/navigation'
 
@@ -8,14 +9,16 @@ window._ = _
 
 window.apollo = client
 
-window.messages = messagesStore
+window.inbound = inboundMessagesStore
+window.outbound = outboundMessagesStore
 window.newMessage = newMessageStore
 window.nav = navigationStore
 
 window.readState = store => JSON.parse(JSON.stringify(store))
 Object.defineProperty(window, 'state', {
   get: () => ({
-    messages: window.readState(messagesStore),
+    inbound: window.readState(inboundMessagesStore),
+    outbound: window.readState(outboundMessagesStore),
     newMessage: window.readState(newMessageStore),
     navigation: window.readState(navigationStore)
   })

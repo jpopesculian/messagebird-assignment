@@ -1,3 +1,3 @@
 const { messages } = require('./db')
 
-module.exports = async message => messages().find().toArray()
+module.exports = async query => messages().find(query).toArray()

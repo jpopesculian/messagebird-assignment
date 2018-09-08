@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  subscription messageCreated {
-    messageCreated {
+  subscription messageReceived {
+    messageReceived {
       id,
       body,
       direction

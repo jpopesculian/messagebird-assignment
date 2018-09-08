@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query messages($direction: direction!) {
-    messages(direction: $direction) {
+  subscription messageSent {
+    messageSent {
       id,
       body,
       direction

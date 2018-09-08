@@ -7,7 +7,7 @@ export const paths = {
   INBOUND: 'inbound'
 }
 
-class NavigationStore {
+export class NavigationStore {
   @observable path = paths.OUTBOUND
 
   constructor() {

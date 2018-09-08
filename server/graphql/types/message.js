@@ -5,14 +5,7 @@ const {
   GraphQLEnumType
 } = require('graphql')
 const recipientsType = require('./recipients')
-
-const directionType = new GraphQLEnumType({
-  name: 'direction',
-  values: {
-    sent: { value: 'mt' },
-    received: { value: 'mo' }
-  }
-})
+const directionType = require('./direction')
 
 const typeType = new GraphQLEnumType({
   name: 'type',

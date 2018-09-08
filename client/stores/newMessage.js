@@ -1,10 +1,10 @@
 import { observable, action, flow } from 'mobx'
 import createMessageMutation from '../graphql/mutations/createMessage'
-import messagesStore from './messages'
+import outboundMessagesStore from './outboundMessages'
 import client from '../apollo'
 import { forEach, values } from 'lodash'
 
-class NewMessageStore {
+export class NewMessageStore {
   @observable sending = false
   @observable error = false
   @observable body = 'test message'
@@ -21,7 +21,7 @@ class NewMessageStore {
         }
       })
       this.sending = false
-      messagesStore.add(data.createMessage)
+      outboundMessagesStore.add(data.createMessage)
     } catch (error) {
       this.sending = false
       return (this.error = error)
