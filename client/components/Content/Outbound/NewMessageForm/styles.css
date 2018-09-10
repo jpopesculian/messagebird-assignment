@@ -1,0 +1,8 @@
+.submit {
+    float: right;
+}
+
+.error {
+    padding: 0.5em;
+    color: red;
+}

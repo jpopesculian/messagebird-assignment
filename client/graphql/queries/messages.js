@@ -5,7 +5,19 @@ export default gql`
     messages(direction: $direction) {
       id,
       body,
-      direction
+      direction,
+      originator,
+      body,
+      validity,
+      scheduledDatetime,
+      createdDatetime,
+      recipients {
+        items {
+          recipient,
+          status,
+          statusDatetime
+        }
+      }
     }
   }
 `

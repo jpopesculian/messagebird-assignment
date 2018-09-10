@@ -1,4 +1,4 @@
-@value primary-btn, primary-btn-hover from '../../../../styles/colors.css';
+@value primary-btn, primary-btn-hover from '../../styles/colors.css';
 
 .button {
     display: inline-block;
@@ -22,11 +22,27 @@
     background-color: primary-btn-hover;
 }
 
+.button:disabled {
+    cursor: initial;
+    background-color: primary-btn-hover;
+}
+
 .icon {
     position: relative;
     top: 0.1em;
 }
 
+.iconLoading svg {
+    animation-name: spin;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
 .title {
     padding: 0 1em;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }

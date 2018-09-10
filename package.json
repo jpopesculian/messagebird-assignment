@@ -21,6 +21,7 @@
     "apollo-link-http": "^1.5.4",
     "apollo-link-ws": "^1.0.8",
     "apollo-server-koa": "^2.0.0-rc.12",
+    "awesome-phonenumber": "^2.2.6",
     "classnames": "^2.2.6",
     "graphql": "^14.0.0",
     "graphql-subscriptions": "^0.5.8",

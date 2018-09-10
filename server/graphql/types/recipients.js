@@ -2,6 +2,7 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
+  GraphQLFloat,
   GraphQLEnumType,
   GraphQLList
 } = require('graphql')
@@ -21,7 +22,7 @@ const statusType = new GraphQLEnumType({
 const itemType = new GraphQLObjectType({
   name: 'item',
   fields: {
-    recipient: { type: GraphQLInt },
+    recipient: { type: GraphQLFloat },
     status: { type: statusType },
     statusDatetime: { type: GraphQLString }
   }

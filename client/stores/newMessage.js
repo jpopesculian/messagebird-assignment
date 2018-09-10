@@ -1,15 +1,17 @@
-import { observable, action, flow } from 'mobx'
+import { observable, action, flow, computed } from 'mobx'
 import createMessageMutation from '../graphql/mutations/createMessage'
 import outboundMessagesStore from './outboundMessages'
 import client from '../apollo'
-import { forEach, values } from 'lodash'
+import PhoneNumber from 'awesome-phonenumber'
+import { forEach, values, isEmpty } from 'lodash'
 
 export class NewMessageStore {
   @observable sending = false
-  @observable error = false
+  @observable error = null
   @observable body = 'test message'
   @observable number = '+19165854267'
-  @observable visible = true
+  @observable numberError = null
+  @observable visible = false
 
   @action send = flow(function*() {
     this.sending = true
@@ -21,7 +23,8 @@ export class NewMessageStore {
           body: this.body
         }
       })
-      this.sending = false
+      this.clear()
+      this.hide()
       outboundMessagesStore.add(data.createMessage)
     } catch (error) {
       this.sending = false
@@ -30,18 +33,49 @@ export class NewMessageStore {
   })
 
   @action setNumber = number => {
+    this.error = null
+    this.numberError = null
     this.number = number
   }
 
+  @action validateNumber = () => {
+    const pn = new PhoneNumber(this.number, 'US')
+    if (!pn.isValid()) {
+      return (this.numberError = 'Invalid phone number')
+    }
+    this.number = pn.getNumber()
+  }
+
   @action setBody = body => {
+    this.error = null
     this.body = body
   }
 
   @action show = () => {
     this.visible = true
   }
+
   @action hide = () => {
     this.visible = false
+  }
+
+  @action clear = () => {
+    this.error = null
+    this.numberError = null
+    this.sending = false
+    this.number = ''
+    this.body = ''
+  }
+
+  @computed get valid() {
+    return !(this.error ||
+      this.numberError ||
+      isEmpty(this.number) ||
+      isEmpty(this.body))
+  }
+
+  @computed get errorString() {
+    return this.error ? this.error.toString() : null
   }
 }
 

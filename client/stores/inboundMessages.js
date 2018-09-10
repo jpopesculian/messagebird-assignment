@@ -1,3 +1,4 @@
+import { action } from 'mobx'
 import { MessagesStore } from './messages'
 
 import client from '../apollo'
@@ -15,6 +16,10 @@ export class InboundMessagesStore extends MessagesStore {
 
   doSubscription() {
     return client.subscribe({ query: messageReceivedSubscription })
+  }
+
+  @action onSubscriptionData({ messageReceived }) {
+    this.add(messageReceived)
   }
 }
 

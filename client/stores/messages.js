@@ -12,11 +12,19 @@ export class MessagesStore {
   }
 
   doQuery() {
-    return new Promise((resolve, reject) => reject())
+    return new Promise((resolve, reject) =>
+      reject(new Error('not implemented'))
+    )
   }
 
   doSubscription() {
-    return new Promise((resolve, reject) => reject())
+    return new Promise((resolve, reject) =>
+      reject(new Error('not implemented'))
+    )
+  }
+
+  @action onSubscriptionData(data) {
+    throw new Error('not implemented')
   }
 
   @action init = () => {
@@ -34,6 +42,7 @@ export class MessagesStore {
       return this.messages
     } catch (error) {
       this.loading = false
+      console.error(error)
       return (this.error = error)
     }
   })
@@ -43,7 +52,7 @@ export class MessagesStore {
   @action subscribe = () => {
     this.unsubscribe()
     return (this.subscription = this.doSubscription().subscribe(
-      ({ data }) => this.add(data.messageCreated),
+      ({ data }) => this.onSubscriptionData(data),
       error => console.warn(error),
       () => (this.subscription = null)
     ))
