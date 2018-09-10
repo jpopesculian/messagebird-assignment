@@ -9,7 +9,7 @@ export class NewMessageStore {
   @observable error = false
   @observable body = 'test message'
   @observable number = '+19165854267'
-  @observable visible = false
+  @observable visible = true
 
   @action send = flow(function*() {
     this.sending = true
@@ -28,6 +28,14 @@ export class NewMessageStore {
       return (this.error = error)
     }
   })
+
+  @action setNumber = number => {
+    this.number = number
+  }
+
+  @action setBody = body => {
+    this.body = body
+  }
 
   @action show = () => {
     this.visible = true
