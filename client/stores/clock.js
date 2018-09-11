@@ -14,7 +14,7 @@ export class ClockStore {
 
   @action start = () => {
     this.stop()
-    this.interval = window.setInterval(() => this.increment(), MINUTE)
+    this.interval = window.setInterval(() => this.increment(), 10 * SECOND)
   }
 
   @action increment = () => (this.tick = (this.tick || 0) + 1)

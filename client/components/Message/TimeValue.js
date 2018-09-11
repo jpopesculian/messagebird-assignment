@@ -25,7 +25,7 @@ export default class TimeValue extends Component {
     }
     if (duration < HOUR) {
       const minutes = Math.floor(duration / MINUTE)
-      return `${minutes} minutes ago`
+      return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
     }
     if (time > startOfDay) {
       return time.toLocaleTimeString('en-US', {

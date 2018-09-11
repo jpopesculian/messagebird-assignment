@@ -6,8 +6,17 @@
     border-style: solid;
     border-top-width: cell-border-width;
     border-bottom-width: cell-border-width;
+    background: white;
+    box-shadow: 0em 0em 1em rgba(0,0,0,0.1);
 
     padding: 0.5em 1.25em;
+}
+
+.title {
+    font-size: .75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 0.5em;
 }
 
 .first {

@@ -5,19 +5,24 @@ import styles from './styles.css'
 
 export default class Button extends Component {
   render() {
-    const { onPress, icon, title, loading, disabled } = this.props
+    const { onPress, icon, title, loading, disabled, className } = this.props
+    const actualIcon = loading ? loader : icon
     return (
       <button
-        className={styles.button}
+        className={classnames(styles.button, className)}
         type="button"
         onClick={onPress}
         disabled={disabled || loading}
       >
-        <span
-          className={classnames(styles.icon, { [styles.iconLoading]: loading })}
-        >
-          <Icon icon={loading ? loader : icon} />
-        </span>
+        {actualIcon
+          ? <span
+              className={classnames(styles.icon, {
+                [styles.iconLoading]: loading
+              })}
+            >
+              <Icon icon={actualIcon} />
+            </span>
+          : null}
         <span className={styles.title}>
           {title}
         </span>

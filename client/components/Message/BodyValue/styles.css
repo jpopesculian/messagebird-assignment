@@ -1,0 +1,17 @@
+.body {
+    white-space: pre-line;
+}
+
+.toggle {
+    font-size: 0.75em;
+    padding: 0.25em;
+    margin-left: 1em;
+    font-weight: normal;
+    background: white;
+    color: #666;
+    border: 1px solid #ccc;
+}
+
+.toggle:hover {
+    background: #eee;
+}

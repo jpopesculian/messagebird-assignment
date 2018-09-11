@@ -6,6 +6,7 @@ export class MessagesStore {
   @observable error = false
   @observable messages = {}
   @observable subscription = null
+  @observable more = true
 
   constructor() {
     this.init()
@@ -38,7 +39,9 @@ export class MessagesStore {
     try {
       const { data } = yield this.doQuery()
       this.loading = false
-      forEach(message => this.add(message), data.messages)
+      const { messages, more } = data.messages
+      forEach(message => this.add(message), messages)
+      this.more = more
       return this.messages
     } catch (error) {
       this.loading = false

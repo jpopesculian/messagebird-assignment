@@ -1,6 +1,19 @@
 .container {
-    padding-top: 1em;
+    padding: 1em 0 3em;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto;
     row-gap: 1em;
+}
+
+.button {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    text-align: center;
+}
+
+.alert {
+    text-align: center;
+    padding: 3em 0 0 0;
+    font-size: 1.5em;
+    color: #888;
 }

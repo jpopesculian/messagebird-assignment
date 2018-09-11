@@ -4,6 +4,7 @@ import NumberValue from './NumberValue'
 import TimeValue from './TimeValue'
 import StatusValue from './StatusValue'
 import DirectionValue from './DirectionValue'
+import BodyValue from './BodyValue'
 import styles from './styles.css'
 import { first } from 'lodash'
 
@@ -30,7 +31,7 @@ export default class Message extends Component {
           title="To"
           value={<NumberValue number={recipient.recipient} />}
         />
-        <Field title="Body" value={body} />
+        <Field title="Body" value={<BodyValue body={body} />} />
         <Field
           title="Status"
           value={<StatusValue status={recipient.status} />}

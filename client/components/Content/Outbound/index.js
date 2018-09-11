@@ -18,7 +18,13 @@ export default class Outbound extends Component {
           <span className={typeStyles.h1}>Outbound</span>
           <div><NewMessageButton /></div>
         </div>
-        <Messages messages={outboundMessagesStore.messageList} />
+        <Messages
+          messages={outboundMessagesStore.messageList}
+          more={outboundMessagesStore.more}
+          error={outboundMessagesStore.error}
+          loading={outboundMessagesStore.loading}
+          load={() => outboundMessagesStore.load()}
+        />
         <NewMessageForm />
       </div>
     )
