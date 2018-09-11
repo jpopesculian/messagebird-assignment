@@ -7,7 +7,7 @@ import Message from '~/components/Message'
 export default class Messages extends Component {
   render() {
     return (
-      <div>
+      <div className={styles.container}>
         {map(
           message => <Message key={message.id} {...message} />,
           this.props.messages

@@ -1,8 +1,6 @@
-.submit {
-    float: right;
-}
-
-.error {
-    padding: 0.5em;
-    color: red;
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }

@@ -1,0 +1,6 @@
+.container {
+    padding-top: 1em;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    row-gap: 1em;
+}

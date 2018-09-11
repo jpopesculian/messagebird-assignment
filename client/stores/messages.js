@@ -1,5 +1,5 @@
 import { observable, action, computed, flow } from 'mobx'
-import { forEach, values } from 'lodash'
+import { forEach, values, orderBy } from 'lodash'
 
 export class MessagesStore {
   @observable loading = true
@@ -67,6 +67,10 @@ export class MessagesStore {
   @action add = message => (this.messages[message.id] = message)
 
   @computed get messageList() {
-    return values(this.messages)
+    return orderBy(
+      ['createdDatetime', 'scheduledDatetime'],
+      ['desc', 'desc'],
+      values(this.messages)
+    )
   }
 }

@@ -1,5 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Field from './Field'
+import NumberValue from './NumberValue'
+import TimeValue from './TimeValue'
+import StatusValue from './StatusValue'
+import DirectionValue from './DirectionValue'
 import styles from './styles.css'
 import { first } from 'lodash'
 
@@ -15,15 +19,32 @@ export default class Message extends Component {
     } = this.props
     const recipient = first(recipients.items) || {}
     return (
-      <div className={styles.container}>
-        <Field title="Type" value={direction} />
-        <Field title="From" value={originator} />
-        <Field title="To" value={recipient.recipient} />
+      <Fragment>
+        <Field
+          title="Type"
+          value={<DirectionValue direction={direction} />}
+          isFirst={true}
+        />
+        <Field title="From" value={<NumberValue number={originator} />} />
+        <Field
+          title="To"
+          value={<NumberValue number={recipient.recipient} />}
+        />
         <Field title="Body" value={body} />
-        <Field title="Status" value={recipient.status} />
-        <Field title="Created" value={createdDatetime || scheduledDatetime} />
-        <Field title="Updated" value={recipient.statusDatetime} />
-      </div>
+        <Field
+          title="Status"
+          value={<StatusValue status={recipient.status} />}
+        />
+        <Field
+          title="Created"
+          value={<TimeValue time={createdDatetime || scheduledDatetime} />}
+        />
+        <Field
+          title="Updated"
+          value={<TimeValue time={recipient.statusDatetime} />}
+          isLast={true}
+        />
+      </Fragment>
     )
   }
 }

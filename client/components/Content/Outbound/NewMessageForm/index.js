@@ -39,6 +39,9 @@ export default class NewMessageForm extends Component {
             onChange={({ value }) => newMessageStore.setBody(value)}
           />
           <div className={styles.footer}>
+            <div className={styles.error}>
+              {newMessageStore.errorString}
+            </div>
             <div className={styles.submit}>
               <Button
                 title="Send"
@@ -47,9 +50,6 @@ export default class NewMessageForm extends Component {
                 disabled={!newMessageStore.valid}
                 onPress={() => newMessageStore.send()}
               />
-            </div>
-            <div className={styles.error}>
-              {newMessageStore.errorString}
             </div>
           </div>
         </form>

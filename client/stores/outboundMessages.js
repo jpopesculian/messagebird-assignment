@@ -9,7 +9,7 @@ export class OutboundMessagesStore extends MessagesStore {
   doQuery() {
     return client.query({
       query: messagesQuery,
-      variables: { direction: 'sent' }
+      variables: { direction: 'outbound' }
     })
   }
 

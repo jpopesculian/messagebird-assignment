@@ -14,9 +14,9 @@ export default class Outbound extends Component {
   render() {
     return (
       <div className={contentStyles.container}>
-        <span className={typeStyles.h1}>Outbound</span>
-        <div>
-          <NewMessageButton />
+        <div className={styles.header}>
+          <span className={typeStyles.h1}>Outbound</span>
+          <div><NewMessageButton /></div>
         </div>
         <Messages messages={outboundMessagesStore.messageList} />
         <NewMessageForm />

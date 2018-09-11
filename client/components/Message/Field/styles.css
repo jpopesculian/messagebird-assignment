@@ -1,0 +1,23 @@
+@value cell-border-width: 1px;
+@value cell-border-radius: 0.5em;
+
+.container {
+    border-color: #ccc;
+    border-style: solid;
+    border-top-width: cell-border-width;
+    border-bottom-width: cell-border-width;
+
+    padding: 0.5em 1.25em;
+}
+
+.first {
+    border-left-width: cell-border-width;
+    border-top-left-radius: cell-border-radius;
+    border-bottom-left-radius: cell-border-radius;
+}
+
+.last {
+    border-right-width: cell-border-width;
+    border-top-right-radius: cell-border-radius;
+    border-bottom-right-radius: cell-border-radius;
+}

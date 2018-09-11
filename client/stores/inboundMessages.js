@@ -10,7 +10,7 @@ export class InboundMessagesStore extends MessagesStore {
   doQuery() {
     return client.query({
       query: messagesQuery,
-      variables: { direction: 'received' }
+      variables: { direction: 'inbound' }
     })
   }
 
