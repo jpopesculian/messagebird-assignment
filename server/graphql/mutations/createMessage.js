@@ -17,7 +17,6 @@ module.exports = {
   },
   resolve: async (rootValue, { number, body }) => {
     const message = await create({
-      originator: number,
       recipients: [number],
       body
     })
