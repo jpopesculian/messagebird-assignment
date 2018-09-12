@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  messagebird:
+    build: .
+    hostname: messagebird
+    container_name: messagebird
+    ports:
+      - 3000:3000
+    expose:
+      - "3000"
+    environment:
+      - ACCESS_KEY=ACCESS_KEY
+      - ORIGINATOR=+10123456789
+      - MONGO_URL="mongodb://mongodb:27017"
+    networks:
+      - front-tier
+      - back-tier
+
+  mongodb:
+    image: mongo:latest
+    hostname: mongodb
+    container_name: mongodb
+    expose:
+      - "27017"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+    volumes:
+      - messagebird-mongodb-data:/data/db
+    networks:
+      - back-tier
+
+volumes:
+  messagebird-mongodb-data:
+
+networks:
+  front-tier:
+  back-tier:
