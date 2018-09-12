@@ -42,7 +42,9 @@ export default class Message extends Component {
         />
         <Field
           title="Updated"
-          value={<TimeValue time={recipient.statusDatetime} />}
+          value={
+            <TimeValue time={recipient.statusDatetime || createdDatetime} />
+          }
           isLast={true}
         />
       </Fragment>

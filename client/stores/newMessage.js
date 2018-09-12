@@ -8,8 +8,8 @@ import { forEach, values, isEmpty } from 'lodash'
 export class NewMessageStore {
   @observable sending = false
   @observable error = null
-  @observable body = 'test message'
-  @observable number = '+19165854267'
+  @observable body = ''
+  @observable number = ''
   @observable numberError = null
   @observable visible = false
 

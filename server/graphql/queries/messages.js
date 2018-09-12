@@ -34,7 +34,6 @@ module.exports = {
     }
   },
   resolve: async (rootValue, { direction, skip, limit }) => {
-    console.log('happens')
     return list({ direction, skip, limit })
   }
 }

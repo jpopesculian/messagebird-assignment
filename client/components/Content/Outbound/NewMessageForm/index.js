@@ -46,7 +46,7 @@ export default class NewMessageForm extends Component {
               <Button
                 title="Send"
                 icon={send}
-                loading={newMessage.sending}
+                loading={newMessageStore.sending}
                 disabled={!newMessageStore.valid}
                 onPress={() => newMessageStore.send()}
               />
